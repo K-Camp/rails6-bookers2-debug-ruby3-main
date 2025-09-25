@@ -11,7 +11,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    Rails.logger.debug params.inspect
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save

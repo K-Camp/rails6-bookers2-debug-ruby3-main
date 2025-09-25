@@ -4,6 +4,7 @@
       <th></th>
       <th>Title</th>
       <th>Opinion</th>
+      <% if show_favorite %><th></th><% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,11 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
+
+        <!-- いいねを表示するかどうかのフラグ -->
+        <% if show_favorite %>
+          <td><%= render 'shared/favorite', book: book %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
