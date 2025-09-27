@@ -1,13 +1,26 @@
 class RelationshipsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     user = User.find(params[:user_id])
-    favorite = current_user.favorites.new(book_id: book.id)
-    favorite.save
-    # 元のページに戻る、元ページのURLがない場合はbooks_pathへ
-    redirect_back(fallback_location: books_path)
+    current_user.follow(user)
+    redirect_to request.referer
   end
 
   def destroy
+    user = User.find(params[:user_id])
+    current_user.unfollow(user)
+    redirect_to request.referer
   end
+  
+  def followings
+    user = User.find(params[:user_id])
+    @users = user.followings
+  end
+  
+  def followers
+    user = User.find(params[:user_id])
+    @users = user.followers
+  end
+
 end
