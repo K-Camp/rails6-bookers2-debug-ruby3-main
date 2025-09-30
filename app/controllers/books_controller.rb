@@ -4,7 +4,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @books = Book.order(favorites_count: :desc)
     @book_new = Book.new
     @book_comment = BookComment.new
   end
