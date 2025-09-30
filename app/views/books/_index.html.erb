@@ -1,4 +1,4 @@
-<table class='table table-hover table-inverse'  id='books-list'>
+<table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th></th>
@@ -17,7 +17,7 @@
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
         <td id="favorite_btn_<%= book.id %>">
-          <%= render "favorites/button", book: book , user: user%>
+          <%= render "favorites/button", book: book %>
         </td>
         <td>コメント数： <%= book.book_comments.count %></td>
       </tr>
